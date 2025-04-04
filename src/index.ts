@@ -11,7 +11,7 @@ export class DOMRMBuilder {
   private $element: JQuery
   
   constructor(element: HTMLElement | JQuery) {
-    this.$element = $(element as any) as JQuery<HTMLElement>
+    this.$element = $(element as any) as JQuery
   }
   
   closest(selector: string): this {
@@ -45,7 +45,7 @@ export class DOMRMBuilder {
     return this
   }
   
-  custom(key: string, fn: (el: HTMLElement | JQuery) => any): this {
+  custom(key: string, fn: (el: JQuery) => any): this {
     this.data[key] = fn(this.$element)
     return this
   }
