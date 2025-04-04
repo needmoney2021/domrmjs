@@ -22,7 +22,7 @@ DOM-Relation Mapping 이었다."
 이름하야 **DOMRM**
 
 
-## Usage
+## How to use
 
 ```html
 <script>
