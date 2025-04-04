@@ -1,5 +1,5 @@
 import $ from 'jquery'
-import { DOMRM } from '../src/index'
+import { DOMRM } from '../src'
 
 describe('DOMRM 병맛 테스트', () => {
   beforeEach(() => {

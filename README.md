@@ -134,7 +134,7 @@ orderItems.push({
 HTML이 이렇게 생겨먹었을 경우에 다음과 같이 써보세요.
 
 ```js
-const shipAddressInfo = DOMRM.from($("#recentdelivery").find('input[name=receiver]:checked').closet('label'))
+const shipAddressInfo = DOMRM.from($("#recentdelivery").find('input[name=receiver]:checked').closest('label'))
   .find('.receiver-name').textAs('ship_name')
   .find(".receiver-phonenumber").textAs("phone")
   .find(".receiver-mobilenumber").textAs("mobilephone")
