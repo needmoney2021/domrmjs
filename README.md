@@ -2,47 +2,21 @@
 
 스파게티 DOM에서 `$("selector").val()` 이런 거 그만 쓰고 싶어서 만들어봄.
 
-경고 : 그냥 웃자고 만들었습니다. 운영에서 쓰지 마세요. 그리고 아래와 같은 코드 범벅이인 프로젝트다? 도망치세요.
+"Object-Relational Mapping이 있다면,   
+너네가 진짜 필요한 건   
+DOM-Relation Mapping 이었다."   
+
+## Warning
+
+그냥 웃자고 만들었습니다.
+> 테스트도 대충 돌렸습니다. 
+
+그리고 아래와 같은 코드 범벅이인 프로젝트다?
+배송지가 아니라 개발자의 영혼이 배송될 수도 있습니다.
 
 ## What is DOM-RM?
 
-``` javascript
-
-var amount = $('input[name=amount]').val()
-...
-$.ajax({
-    url: "<c:url value="/doom/moredoom/getCheckPreOrderInsert.json"/>",
-    method: "GET",
-    dataType: "json",
-    data: {
-        "cart_gubun": $("input[name=cart_gubun]").val(),
-        "item_idx_arr": item_idx_arr,
-        "orderdate": $("input[name=orderdate]").val(),
-        "card1_card_amount": card1_card_amount,
-        "card2_card_amount": card2_card_amount,
-        "card3_card_amount": card3_card_amount,
-        "vaccount_amount": vaccount_amount,
-        "mileage_code": $("select[name=mileage_code] option:checked").val(),
-        "mileage_amount": mileage_amount,
-        "pay_no": $("input[name=pay_no]").val(),
-        "prepay_amount": prepay_amount,
-        "coupon": $("input[name=coupon]").val(),
-        "coupon_amount": coupon_amount,
-        "certi_card_amount": certi_card_amount,
-        "totalPrice": totalPrice
-    },
-})
-...
-let itemContainer = $(this).closest(".col-box");
-orderItems.push({
-  round: i,
-  itemcode: itemContainer.find("input[name=itemcode_arr]").val(),
-  quantity: parseInt($(this).val())
-});
-```
-
-이건 거의 프론트에서 JSON 만드는 DAO.
-심지어 jQuery로 돔 긁어서 엔티티 만들어 보내는 걸 보면 위 코드에는 ORM 개념이 들어가 있음.
+정신 나간 jQuery 레거시에서 정신 차리고 객체 다루고 싶은 자들을 위한 프리즘.
 
 이름하야 **DOMRM**
 
