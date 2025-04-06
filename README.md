@@ -1,121 +1,129 @@
-# DOMRM JS
+# DOMRMjs
 
-스파게티 DOM에서 `$("selector").val()` 이런 거 그만 쓰고 싶어서 만들어봄.
+**DOMRM**은 DOM을 *RM*해드립니다.  
+"Remove"가 아닙니다.  
+**RM = Rapid Mapping**  
+병맛 DOM 구조도 데이터로 후딱 뽑아드립니다.
 
-"Object-Relational Mapping이 있다면,   
-너네가 진짜 필요한 건   
-DOM-Relation Mapping 이었다."   
+> jQuery 기반, 빠르고 직관적인 DOM 추출 유틸  
+> 값 뽑고, 속성 뽑고, `build()` 하면 끝!
 
-## Warning
+---
 
-그냥 웃자고 만들었습니다.
-> 테스트도 대충 돌렸습니다. 
+## 설치
 
-그리고 아래와 같은 코드 범벅이인 프로젝트다?
-배송지가 아니라 개발자의 영혼이 어딘가로 배송될 수도 있습니다. 
-빨리 탈출하세요.
+```bash
+npm install domrmjs
+```
 
-## What is DOM-RM?
-
-정신 나간 jQuery 레거시에서 정신 차리고 객체 다루고 싶은 자들을 위한 프리즘.
-
-이름하야 **DOMRM**
-
-
-## Usage
+또는 그냥 `<script>`로 쓰고 싶다면:
 
 ```html
-<script>
-    $.latelyAddressSearch = function(){
-
-        const layer = $("#pop_resentdelivery").find(".list-gray > ul");
-
-        layer.find("li").remove();
-
-        $.ajax({
-            url : "<c:url value="/getlatelyOrderAddrList.json"/>",
-            method : "GET",
-            dataType : "json",
-            beforeSend: function() {}
-        }).done(function(obj) {
-            if(obj.result){
-                const addrinfo = obj.contents;
-                let address_li = "";
-
-                let txt = "";
-                let ship_name = "";
-                let phone = "";
-                let mobilephone = "";
-                let zipcode = "";
-                let address1 = "";
-                let address2 = "";
-                let fulladdress = "";
-
-                addrinfo.forEach(function(addr, idx){
-                    txt = addr.txt;
-                    ship_name = addr.ship_name;
-                    if(ship_name == undefined){ship_name = "";}
-                    phone = addr.phone;
-                    if(phone == undefined){phone = "";}
-                    mobilephone = addr.mobilephone;
-                    if(mobilephone == undefined){mobilephone = "";}
-                    zipcode = addr.zipcode;
-                    if(zipcode == undefined){zipcode = "";}
-                    address1 = addr.address1;
-                    if(address1 == undefined){address1 = "";}
-                    address2 = addr.address2;
-                    if(address2 == undefined){address2 = "";}
-
-                    address_li += "<li>";
-                    address_li += "    <label name='rdo" + idx.toString() + "'>";
-                    address_li += "        <input id='rdo" + idx.toString() + "' name='receiver' type='radio'/>";
-                    address_li += "        <span>";
-                    address_li += "            <span class='rdo-name ellipsis'>" + txt + "</span>";
-
-                    address_li += "            <div class='address-info'>";
-                    address_li += "                <p>";
-                    address_li += "                    <strong class='receiver-name'>" + ship_name + "</strong>";
-                    address_li += "                    <span class='receiver-phone roboto receiver-phonenumber'>" + phone + "</span>";
-                    address_li += "                    <span class='receiver-phone roboto receiver-mobilenumber'>" + mobilephone + "</span>";
-                    address_li += "                </p>";
-                    address_li += "                <p class='receiver-addr'>";
-                    address_li += "                    (<span class='receiver-zipcode'>" + zipcode + "</span>)<!-- 우편번호 -->";
-                    address_li += "                    <span class='receiver-address1'>" + address1 + "</span><!-- 기본주소 -->";
-                    address_li += "                    <span class='receiver-address2'>" + address2 + "</span><!-- 직접입력주소 -->";
-                    address_li += "                </p>";
-                    address_li += "            </div>";
-                    address_li += "        </span>";
-                    address_li += "    </label>";
-                    address_li += "</li>";
-                });
-
-                layer.append(address_li);
-            }
-            else{
-                if(obj.resultMessage != undefined){
-                    alert(obj.resultMessage);
-                }
-                else{
-                    alert("<spring:message code="msgSYSTEM_ERROR"/>");
-                }
-            }
-        }).fail(function(e) {
-            alert("<spring:message code="msgSYSTEM_ERROR"/>");
-        });
-    }
-</script>
+<script src="https://unpkg.com/domrmjs/dist/domrm.umd.js"></script>
 ```
 
-HTML이 이렇게 생겨먹었을 경우에 다음과 같이 써보세요.
+> 글로벌 변수 `DOMRM`으로 접근 가능.
+> 근데 얜 테스트 안 해봄 ㅈㅅ^^
 
-```js
-const shipAddressInfo = DOMRM.from($("#recentdelivery").find('input[name=receiver]:checked').closest('label'))
-  .find('.receiver-name').textAs('ship_name')
-  .find(".receiver-phonenumber").textAs("phone")
-  .find(".receiver-mobilenumber").textAs("mobilephone")
-  .find(".receiver-zipcode").textAs("zipcode")
-  .find(".receiver-address1").textAs("address1")
-  .find(".receiver-address2").textAs("address2")
+---
+
+## 예시
+
+```html
+<form id="loginForm">
+  <input name="username" value="neo" />
+  <input name="password" value="matrix" />
+</form>
+```
+
+```ts
+import { DOMRM } from 'domrmjs'
+
+const data = DOMRM
+  .from($('#loginForm'))
+  .find('[name="username"]').valAs('id')
+  .find('[name="password"]').valAs('pw')
   .build()
+
+console.log(data) // { id: 'neo', pw: 'matrix' }
 ```
 
+---
+
+## 문법
+
+```ts
+DOMRM.from(element: HTMLElement | JQuery): DOMRMBuilder
+```
+
+### 체이닝 메서드
+
+| 메서드 | 설명 |
+|--------|------|
+| `find(selector)` | 자식 요소 중에서 찾기 |
+| `closest(selector)` | 조상 요소 중에서 가장 가까운 거 찾기 |
+| `valAs(key)` | `.val()` 값을 문자열로 저장 |
+| `valAsNum(key)` | `.val()` 값을 숫자로 파싱해서 저장 |
+| `textAs(key)` | `.text()` 내용을 저장 |
+| `attrAs(attrName)` | 해당 속성 값을 저장 |
+| `custom(key, fn)` | 커스텀 로직으로 값 추출 |
+| `build()` | 데이터 객체 반환 |
+
+---
+
+## 커스텀 추출 예제
+
+```ts
+const data = DOMRM
+  .from($('#price'))
+  .custom('length', ($el) => {
+    const val = $el.val()
+    if (typeof val === 'string') {
+      return val.length
+    } else {
+      throw new Error('Expected string')
+    }
+  })
+  .build()
+
+console.log(data) // { length: 5 }
+```
+
+---
+
+## 철학
+
+- jQuery 시대 유산들과 공존하며 살아가기
+- 테스트는 있지만 타입 안정성은 적당히 타협
+- DOM은 어차피 망가질 것이므로 유연하게 대응
+
+---
+
+## 테스트
+
+```bash
+npm test
+```
+
+---
+
+## IE 지원?
+
+> 웃으면 복이 와요.  
+> 그래서 지원합니다.  
+> **IE11**에서도 돌아갑니다. (polyfill 필요할 수 있음)
+> 얘도 테스트 안 해봄^^
+
+---
+
+## 기여
+
+Pull Request, 병맛 제안, 이슈 제보 환영합니다.  
+단, 철학에 어긋나는 **과도한 진지함**은 삼가주세요.
+
+---
+
+## 라이선스
+
+MIT  
+*Do whatever you want. Just don’t blame me.*
