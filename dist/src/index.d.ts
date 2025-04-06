@@ -11,6 +11,6 @@ export declare class DOMRMBuilder {
     valAsNum(key: string): this;
     textAs(key: string): this;
     attrAs(key: string): this;
-    custom(key: string, fn: (el: HTMLElement | JQuery) => any): this;
+    custom(key: string, fn: (el: JQuery) => any): this;
     build(): Record<string, any>;
 }

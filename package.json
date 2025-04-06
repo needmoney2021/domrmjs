@@ -2,9 +2,9 @@
   "name": "domrmjs",
   "main": "dist/domrm.umd.js",
   "module": "dist/domrm.es.js",
-  "types": "dist/index.d.ts",
+  "types": "dist/src/index.d.ts",
   "cdn": "dist/domrm.umd.js",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Because somtimes you just want to DOMRM everything.",
   "author": "needmoney",
   "scripts": {
