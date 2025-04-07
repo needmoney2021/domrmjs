@@ -4,7 +4,7 @@
   "module": "dist/domrm.es.js",
   "types": "dist/src/index.d.ts",
   "cdn": "dist/domrm.umd.js",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Because somtimes you just want to DOMRM everything.",
   "author": "needmoney",
   "scripts": {
@@ -25,6 +25,7 @@
     "jquery",
     "queryselector"
   ],
+  "files": ["dist"],
   "license": "MIT",
   "type": "commonjs",
   "devDependencies": {
@@ -42,5 +43,8 @@
     "jquery": "^3.7.1",
     "vite": "^6.2.5",
     "vite-plugin-dts": "^4.5.3"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
   }
 }
