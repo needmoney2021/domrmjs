@@ -4,13 +4,22 @@
   "module": "dist/domrm.es.js",
   "types": "dist/src/index.d.ts",
   "cdn": "dist/domrm.umd.js",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Because somtimes you just want to DOMRM everything.",
   "author": "needmoney",
   "scripts": {
     "test": "jest",
     "build": "npx vite build"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/needmoney2021/domrmjs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/needmoney2021/domrmjs/issues",
+    "email": "limemimorinn@gmail.com"
+  },
+  "homepage": "https://github.com/needmoney2021/domrmjs#readme",
   "keywords": [
     "dom",
     "jquery",
