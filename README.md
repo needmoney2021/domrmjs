@@ -13,7 +13,7 @@
 ## 설치
 
 ```bash
-npm install domrmjs
+npm install domrm
 ```
 
 또는 그냥 `<script>`로 쓰고 싶다면:
