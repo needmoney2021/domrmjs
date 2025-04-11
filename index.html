@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOMRM</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.js" integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc=" crossorigin="anonymous"></script>
+    <script src="dist/domrm.umd.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div id="container">
+            <input id="name" value="needmoney">
+            <input id="email" value="needmoney@test.co.kr">
+        </div>
+    </div>
+    <div id="universe">
+        <section class="planet" id="earth">
+            <div class="continent">
+                <div class="country">
+                    <div class="korea">
+                        <div class="city">
+                            <div class="person">
+                                <input class="name" value="장원영">
+                                <input class="email" value="LuckyVicky@example.com">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="japan">
+                        <div class="city">
+                            <div class="tokyo">
+                                <div class="person">
+                                    <input class="name" value="Tsubomi">
+                                    <input class="email" value="tsubomi@example.com">
+                                </div>
+                            </div>
+                            <div class="osaka">
+                                <div class="person">
+                                    <input class="name" value="Sora">
+                                    <input class="email" value="sora@aoi.co.jp">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', () => {
+            console.info(DOMRM)
+            let data = DOMRM.from($('#container'))
+                    .find('#name').valAs('name')
+                    .find('#email').valAs('email')
+                    .build()
+            console.info(data)
+
+            data = DOMRM.from($('.korea'))
+                    .descend('.person')
+                    .find('.name').valAs('kName')
+                    .find('.email').valAs('kEmail')
+                    .ascend('.country')
+                    .descend('.japan')
+                    .descend('.tokyo')
+                    .find('.name').valAs('tName')
+                    .find('.email').valAs('tEmail')
+                    .ascend('.country')
+                    .descend('.osaka')
+                    .find('.name').valAs('oName')
+                    .find('.email').valAs('oEmail')
+                    .build()
+            console.info(data)
+        })
+    </script>
+</body>
+</html>

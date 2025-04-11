@@ -1,12 +1,15 @@
-export declare class DOMRM {
-    static from(element: HTMLElement | JQuery): DOMRMBuilder;
-}
+declare const DOMRM: {
+    from(element: HTMLElement | JQuery): DOMRMBuilder;
+};
 export declare class DOMRMBuilder {
+    private $root;
     private data;
     private $element;
     constructor(element: HTMLElement | JQuery);
     closest(selector: string): this;
     find(selector: string): this;
+    ascend(selector: string): this;
+    descend(selector: string): this;
     valAs(key: string): this;
     valAsNum(key: string): this;
     textAs(key: string): this;
@@ -14,3 +17,4 @@ export declare class DOMRMBuilder {
     custom(key: string, fn: (el: JQuery) => any): this;
     build(): Record<string, any>;
 }
+export default DOMRM;

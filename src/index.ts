@@ -1,26 +1,44 @@
 import $ from 'jquery'
 
-export class DOMRM {
-  static from(element: HTMLElement | JQuery): DOMRMBuilder {
+if (typeof $ !== 'function') {
+  throw new Error('jQuery is not loaded or $ is not defined.')
+}
+
+const DOMRM = {
+  from(element: HTMLElement | JQuery): DOMRMBuilder {
     return new DOMRMBuilder(element)
   }
 }
 
 export class DOMRMBuilder {
+  private $root: JQuery
   private data: Record<string, any> = {}
   private $element: JQuery
   
   constructor(element: HTMLElement | JQuery) {
-    this.$element = $(element as any) as JQuery
+    this.$root = $(element as any) as JQuery
+    this.$element = this.$root
   }
   
   closest(selector: string): this {
-    this.$element = this.$element.closest(selector)
+    this.$element = this.$root.closest(selector)
     return this
   }
   
   find(selector: string): this {
-    this.$element = this.$element.find(selector)
+    this.$element = this.$root.find(selector)
+    return this
+  }
+  
+  ascend(selector: string): this {
+    this.$root = this.$root.closest(selector)
+    this.$element = this.$root
+    return this
+  }
+  
+  descend(selector: string): this {
+    this.$root = this.$root.find(selector)
+    this.$element = this.$root
     return this
   }
   
@@ -54,3 +72,9 @@ export class DOMRMBuilder {
     return this.data
   }
 }
+
+if (typeof window !== 'undefined') {
+  (window as any).DOMRM = DOMRM
+}
+
+export default DOMRM

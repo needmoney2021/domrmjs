@@ -1,18 +1,26 @@
 import i from "jquery";
-class n {
-  static from(t) {
-    return new r(t);
+if (typeof i != "function")
+  throw new Error("jQuery is not loaded or $ is not defined.");
+const r = {
+  from(s) {
+    return new o(s);
   }
-}
-class r {
+};
+class o {
   constructor(t) {
-    this.data = {}, this.$element = i(t);
+    this.data = {}, this.$root = i(t), this.$element = this.$root;
   }
   closest(t) {
-    return this.$element = this.$element.closest(t), this;
+    return this.$element = this.$root.closest(t), this;
   }
   find(t) {
-    return this.$element = this.$element.find(t), this;
+    return this.$element = this.$root.find(t), this;
+  }
+  ascend(t) {
+    return this.$root = this.$root.closest(t), this.$element = this.$root, this;
+  }
+  descend(t) {
+    return this.$root = this.$root.find(t), this.$element = this.$root, this;
   }
   valAs(t) {
     return this.data[t] = this.$element.val(), this;
@@ -34,7 +42,8 @@ class r {
     return this.data;
   }
 }
+typeof window < "u" && (window.DOMRM = r);
 export {
-  n as DOMRM,
-  r as DOMRMBuilder
+  o as DOMRMBuilder,
+  r as default
 };
