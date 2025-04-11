@@ -6,7 +6,6 @@ export declare class DOMRMBuilder {
     private data;
     private $element;
     constructor(element: HTMLElement | JQuery);
-    closest(selector: string): this;
     find(selector: string): this;
     ascend(selector: string): this;
     descend(selector: string): this;

@@ -20,11 +20,6 @@ export class DOMRMBuilder {
     this.$element = this.$root
   }
   
-  closest(selector: string): this {
-    this.$element = this.$root.closest(selector)
-    return this
-  }
-  
   find(selector: string): this {
     this.$element = this.$root.find(selector)
     return this

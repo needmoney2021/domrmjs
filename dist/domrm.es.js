@@ -10,9 +10,6 @@ class o {
   constructor(t) {
     this.data = {}, this.$root = i(t), this.$element = this.$root;
   }
-  closest(t) {
-    return this.$element = this.$root.closest(t), this;
-  }
   find(t) {
     return this.$element = this.$root.find(t), this;
   }

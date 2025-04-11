@@ -1,5 +1,5 @@
 import $ from 'jquery'
-import { DOMRM } from '../src'
+import DOMRM from '../src'
 
 describe('DOMRM 병맛 테스트', () => {
   beforeEach(() => {
@@ -41,9 +41,8 @@ describe('DOMRM 병맛 테스트', () => {
   it('find와 closest도 체이닝 가능해야 한다', () => {
     const data = DOMRM
       .from($('#input'))
-      .closest('#wrapper')
-      .find('#text')
-      .textAs('label')
+      .ascend('#wrapper')
+      .find('#text').textAs('label')
       .build()
     
     expect(data).toEqual({ label: 'Hello DOMRM' })

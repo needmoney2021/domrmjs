@@ -15,7 +15,7 @@
 `<script>`로 쓰고 싶다면:
 
 ```html
-<script src="https://unpkg.com/domrmjs/dist/domrm.umd.js"></script>
+<script src="https://unpkg.com/domrm/dist/domrm.umd.js"></script>
 ```
 
 > 글로벌 변수 `DOMRM`으로 접근 가능.
@@ -146,19 +146,18 @@ DOMRM.from(element: HTMLElement | JQuery): DOMRMBuilder
 
 ### 체이닝 메서드
 
-| 메서드 | 설명 |
-|:-----|-----|
-| from(element) |	지정한 루트 요소로부터 DOMRM 체이닝을 시작 |
-| find(selector) |	현재 루트 요소 내부에서 요소를 찾아 $element로 설정 |
-| closest(selector) |	현재 루트 요소에서 가장 가까운 조상 요소를 찾아 $element로 설정 |
-| descend(selector) |	루트 요소를 지정한 하위 요소로 이동하고 해당 요소를 $element로 설정 |
-| ascend(selector) |	루트 요소를 지정한 상위 요소로 이동하고 해당 요소를 $element로 설정 |
-| valAs(key) |	$element.val() 값을 문자열로 추출하여 key에 저장 |
-| valAsNum(key) |	$element.val() 값을 숫자로 변환하여 key에 저장 |
-| textAs(key) |	$element.text() 값을 추출하여 key에 저장 |
-| attrAs(attrName) |	$element.attr(attrName) 값을 추출하여 key에 저장 |
-| custom(key, fn) |	$element을 인자로 전달해 fn의 실행 결과를 key에 저장 |
-| build() |	체이닝 도중 저장한 모든 값을 포함한 객체를 반환 |
+| 메서드 | 설명                          |
+|:-----|-----------------------------|
+| from(element) | 지정한 루트 요소로부터 DOMRM 체이닝을 시작  |
+| find(selector) | 현재 루트 요소 내부에서 요소를 찾아 $element로 설정 |
+| descend(selector) | 루트 요소를 지정한 하위 요소로 이동하고 해당 요소를 $element로 설정 |
+| ascend(selector) | 루트 요소를 지정한 상위 요소로 이동하고 해당 요소를 $element로 설정 |
+| valAs(key) | $element.val() 값을 문자열로 추출하여 key에 저장 |
+| valAsNum(key) | $element.val() 값을 숫자로 변환하여 key에 저장 |
+| textAs(key) | $element.text() 값을 추출하여 key에 저장 |
+| attrAs(attrName) | $element.attr(attrName) 값을 추출하여 key에 저장 |
+| custom(key, fn) | $element을 인자로 전달해 fn의 실행 결과를 key에 저장 |
+| build() | 체이닝 도중 저장한 모든 값을 포함한 객체를 반환 |
 
 ---
 
