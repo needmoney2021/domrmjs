@@ -16,15 +16,6 @@
 npm install domrm
 ```
 
-또는 그냥 `<script>`로 쓰고 싶다면:
-
-```html
-<script src="https://unpkg.com/domrmjs/dist/domrm.umd.js"></script>
-```
-
-> 글로벌 변수 `DOMRM`으로 접근 가능.
-> 근데 얜 테스트 안 해봄 ㅈㅅ^^
-
 ---
 
 ## 예시
