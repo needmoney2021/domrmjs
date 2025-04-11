@@ -134,7 +134,7 @@ console.log(data) // { id: 'neo', pw: 'matrix' }
 </html>
 ```
 
-![example-result.png](example-result.png)
+![example-result.png](../example-result.png)
 
 ## Syntax
 
