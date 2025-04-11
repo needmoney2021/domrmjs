@@ -1,38 +1,34 @@
 # DOMRMjs
 
-[EN](docs/README.en.md)
+**DOMRM** *RM*s DOM.   
+It does not mean "Remove".   
+**RM = Rapid Mapping or Relational Mapping**
+It can extract data from mental-sucking spaghetti DOM.
 
-**DOMRM**은 DOM을 *RM*해드립니다.  
-"Remove"가 아닙니다.  
-**RM = Rapid Mapping**  
-병맛 DOM 구조도 데이터로 후딱 뽑아드립니다.
-
-> jQuery 기반, 빠르고 직관적인 DOM 추출 유틸  
-> 값 뽑고, 속성 뽑고, `build()` 하면 끝!   
+> A Utility draws data from DOM, based on jQuery, and is rapid and intuitive.   
+> Find elements, draw value, and run `build()`, that's all.
 
 ---
 
-## 설치
+## Installment
 
-`<script>`로 쓰고 싶다면:
+Wanna use it as `<script>`:
 
 ```html
 <script src="https://unpkg.com/domrm/dist/domrm.umd.js"></script>
 ```
 
-> 글로벌 변수 `DOMRM`으로 접근 가능.
-
-또는 Node Module로 쓰고 싶다면?
+Or as node module:
 
 ```bash
 npm install domrm
 ```
 
-> 얘는 테스트 해 볼게요... 아직 안 해 봄^^.
+> I'm gonna test this... ^^
 
 ---
 
-## 예시(Node)
+## Example(Node)
 
 ```html
 <form id="loginForm">
@@ -53,9 +49,9 @@ const data = DOMRM
 console.log(data) // { id: 'neo', pw: 'matrix' }
 ```
 
-## 예시(CDN)
+## Example(CDN)
 
-**jQuery를 먼저 로드**하세요.
+**Load jQuery first.**
 
 ```html
 <!DOCTYPE html>
@@ -63,7 +59,7 @@ console.log(data) // { id: 'neo', pw: 'matrix' }
 <head>
     <meta charset="UTF-8">
     <title>DOMRM</title>
-    <!-- JQuery를 먼저 로드 -->
+    <!-- JQuery first -->
     <script src="https://code.jquery.com/jquery-3.7.1.slim.js" integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc=" crossorigin="anonymous"></script>
     <script src="dist/domrm.umd.js"></script>
 </head>
@@ -140,30 +136,29 @@ console.log(data) // { id: 'neo', pw: 'matrix' }
 
 ![example-result.png](example-result.png)
 
-## 문법
+## Syntax
 
 ```ts
 DOMRM.from(element: HTMLElement | JQuery): DOMRMBuilder
 ```
 
-### 체이닝 메서드
+### Methods
 
-| 메서드 | 설명                          |
-|:-----|-----------------------------|
-| from(element) | 지정한 루트 요소로부터 DOMRM 체이닝을 시작  |
-| find(selector) | 현재 루트 요소 내부에서 요소를 찾아 $element로 설정 |
-| descend(selector) | 루트 요소를 지정한 하위 요소로 이동하고 해당 요소를 $element로 설정 |
-| ascend(selector) | 루트 요소를 지정한 상위 요소로 이동하고 해당 요소를 $element로 설정 |
-| valAs(key) | $element.val() 값을 문자열로 추출하여 key에 저장 |
-| valAsNum(key) | $element.val() 값을 숫자로 변환하여 key에 저장 |
-| textAs(key) | $element.text() 값을 추출하여 key에 저장 |
-| attrAs(attrName) | $element.attr(attrName) 값을 추출하여 key에 저장 |
-| custom(key, fn) | $element을 인자로 전달해 fn의 실행 결과를 key에 저장 |
-| build() | 체이닝 도중 저장한 모든 값을 포함한 객체를 반환 |
+| 메서드 | 설명                                                    |
+|:-----|-------------------------------------------------------|
+| find(selector) | Find a descendant element from current root           |
+| descend(selector) | Find the nearest descendant element from current root |
+| ascend(selector) | Move current root up to the closest matching parent            |
+| valAs(key) | Save .val() value as a string                   |
+| valAsNum(key) | Save .val() as a parsed number                    |
+| textAs(key) | Save .text() content                      |
+| attrAs(attrName) | Save the value of an attribute               |
+| custom(key, fn) | Apply custom function to current element                 |
+| build() | Return the collected data                          |
 
 ---
 
-## 커스텀 추출 예제
+## custom(key, fn)
 
 ```ts
 const data = DOMRM
@@ -183,11 +178,11 @@ console.log(data) // { length: 5 }
 
 ---
 
-## 철학
+## Agenda
 
-- jQuery 시대 유산들과 공존하며 살아가기
-- 테스트는 있지만 타입 안정성은 적당히 타협
-- DOM은 어차피 망가질 것이므로 유연하게 대응
+- Living in coexistence with the legacies of the jQuery era.
+- There are tests, but type safety is moderately compromised.
+- Since the DOM will break anyway, respond flexibly.
 
 ---
 
@@ -199,21 +194,20 @@ npm test
 
 ---
 
-## IE 지원?
+## IE Support?
 
-> 웃으면 복이 와요.  
-> 그래서 지원합니다. 안 할 수도 있어요. 해 보셈.
-
----
-
-## 기여
-
-Pull Request, 병맛 제안, 이슈 제보 환영합니다.  
-단, 철학에 어긋나는 **과도한 진지함**은 삼가주세요.
+> It supports it. Might not do it though. Give it a try^^.
 
 ---
 
-## 라이선스
+## Contribute
+
+Pull Requests, silly proposals, and issue reports are welcome.   
+However, please refrain from **excessive seriousness** that goes against our philosophy.
+
+---
+
+## License
 
 MIT  
 *Do whatever you want. Just don’t blame me.*
