@@ -40,7 +40,7 @@ npm install domrm
 ```
 
 ```ts
-import { DOMRM } from 'domrmjs'
+import DOMRM from 'domrmjs'
 
 const data = DOMRM
   .from($('#loginForm'))
