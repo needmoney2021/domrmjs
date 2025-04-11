@@ -2,7 +2,7 @@
 
 **DOMRM** *RM*s DOM.   
 It does not mean "Remove".   
-**RM = Rapid Mapping or Relational Mapping**
+**RM = Rapid Mapping or Relational Mapping**   
 It can extract data from mental-sucking spaghetti DOM.
 
 > A Utility draws data from DOM, based on jQuery, and is rapid and intuitive.   
