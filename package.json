@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/needmoney2021/domrmjs.git"
+    "url": "git+https://github.com/needmoney2021/domrmjs.git"
   },
   "bugs": {
     "url": "https://github.com/needmoney2021/domrmjs/issues",
@@ -25,7 +25,9 @@
     "jquery",
     "queryselector"
   ],
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "license": "MIT",
   "type": "commonjs",
   "devDependencies": {
