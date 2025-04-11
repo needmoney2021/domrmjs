@@ -144,7 +144,7 @@ DOMRM.from(element: HTMLElement | JQuery): DOMRMBuilder
 
 ### Methods
 
-| 메서드 | 설명                                                    |
+| Method | Desc                                                    |
 |:-----|-------------------------------------------------------|
 | find(selector) | Find a descendant element from current root           |
 | descend(selector) | Find the nearest descendant element from current root |
@@ -186,7 +186,7 @@ console.log(data) // { length: 5 }
 
 ---
 
-## 테스트
+## Test
 
 ```bash
 npm test
