@@ -23,9 +23,6 @@ Or as node module:
 ```bash
 npm install domrm
 ```
-
-> I'm gonna test this... ^^
-
 ---
 
 ## Example(Node)
