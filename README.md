@@ -1,6 +1,10 @@
 # DOMRMjs
 
-[EN](docs/README.en.md)
+## Languages
+
+* [EN](docs/README.en.md)
+
+---
 
 **DOMRM**은 DOM을 *RM*해드립니다.  
 "Remove"가 아닙니다.  
